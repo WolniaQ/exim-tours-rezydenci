@@ -1,0 +1,501 @@
+/* ==========================================================================
+   1. RESET I ZMIENNE KOLORYSTYCZNE EXIM TOURS
+   ========================================================================== */
+:root {
+  --exim-navy: #0b2545;
+  --exim-blue: #134074;
+  --exim-orange: #f37021;
+  --exim-orange-hover: #d85c10;
+  --exim-light-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(11, 37, 69, 0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(11, 37, 69, 0.15);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--exim-light-bg);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. HEADER, LOGO I WYSZUKIWARKA
+   ========================================================================== */
+.navbar {
+  background: var(--exim-navy);
+  color: #ffffff;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-text {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.exim-blue {
+  color: #ffffff;
+}
+
+.exim-orange {
+  color: var(--exim-orange);
+  margin-left: 2px;
+}
+
+.logo-subtext {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: var(--exim-orange);
+  border-color: var(--exim-orange);
+}
+
+.stats-badge {
+  background: rgba(243, 112, 33, 0.15);
+  color: #ff9d5c;
+  border: 1px solid rgba(243, 112, 33, 0.3);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Wyszukiwarka */
+.search-container {
+  position: relative;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 42px 12px 44px;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 14px;
+  background: #ffffff;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+#searchInput:focus {
+  border-color: var(--exim-orange);
+  box-shadow: 0 0 0 4px rgba(243, 112, 33, 0.2);
+}
+
+.clear-btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Rozwijana lista wyników */
+.search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  max-height: 380px;
+  overflow-y: auto;
+  display: none;
+  z-index: 2000;
+  border: 1px solid var(--border-color);
+}
+
+.search-result-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.15s ease;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: #f1f5f9;
+}
+
+.result-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.result-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--exim-navy);
+}
+
+.result-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.result-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.badge-country { background: #e0f2fe; color: #0369a1; }
+.badge-dest { background: #fef3c7; color: #b45309; }
+.badge-resident { background: #dcfce7; color: #15803d; }
+
+/* ==========================================================================
+   3. MAPA I PANEL BOCZNY
+   ========================================================================== */
+.app-main {
+  flex: 1;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+#map {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  background: #e5e9ec;
+}
+
+/* Styl bocznego panelu */
+.info-panel {
+  position: absolute;
+  top: 16px;
+  right: -450px;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  height: calc(100% - 32px);
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--border-color);
+}
+
+.info-panel.open {
+  right: 16px;
+}
+
+.panel-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f8fafc;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+
+.panel-country-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--exim-orange);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.panel-title-group h2 {
+  font-size: 20px;
+  color: var(--exim-navy);
+  font-weight: 700;
+}
+
+.close-panel-btn {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.close-panel-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.panel-info-card {
+  margin: 14px 20px 0 20px;
+  padding: 10px 14px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-info-card.warning {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.residents-list {
+  flex: 1;
+  padding: 16px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Karta pojedynczego rezydenta */
+.resident-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+
+.resident-card:hover {
+  border-color: var(--exim-blue);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.resident-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.resident-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--exim-navy);
+}
+
+.role-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: #e2e8f0;
+  color: #334155;
+  text-transform: uppercase;
+}
+
+.role-lead {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.resident-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.detail-row i {
+  color: var(--exim-orange);
+  width: 16px;
+  text-align: center;
+}
+
+.detail-row a {
+  color: var(--exim-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.detail-row a:hover {
+  color: var(--exim-orange);
+  text-decoration: underline;
+}
+
+.detail-period {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+/* ==========================================================================
+   4. WŁASNE ZNACZNIKI NA MAPIE (CUSTOM MARKERS)
+   ========================================================================== */
+.country-badge-marker {
+  background: var(--exim-navy);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.country-badge-marker:hover {
+  background: var(--exim-orange);
+  transform: scale(1.1);
+}
+
+.country-badge-count {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10px;
+}
+
+.dest-pin-marker {
+  background: var(--exim-orange);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dest-pin-marker:hover {
+  background: var(--exim-navy);
+  transform: translateY(-3px);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsywność na smartfony */
+@media (max-width: 640px) {
+  .header-content { flex-direction: column; gap: 8px; }
+  .info-panel { width: 100%; right: -100%; top: 0; height: 100%; border-radius: 0; }
+  .info-panel.open { right: 0; }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exim Tours — Mapa Rezydentów i Destynacji</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="header-content">
+      <button id="resetMapBtn" class="nav-btn" title="Widok całego świata">
+        <i class="fa-solid fa-globe"></i> <span>Cały świat</span>
+      </button>
+
+      <div class="brand-logo" onclick="resetToWorldView()">
+        <div class="logo-text">
+          <span class="exim-blue">EXIM</span><span class="exim-orange">tours</span>
+        </div>
+        <span class="logo-subtext">BAZA REZYDENTÓW & DESTYNACJI</span>
+      </div>
+
+      <div class="stats-badge" id="statsBadge">
+        <i class="fa-solid fa-user-check"></i> <span id="residentCount">Ładowanie...</span>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Szukaj kraju, destynacji (np. Hurghada, Majorka), rezydenta lub numeru..." 
+          autocomplete="off"
+        />
+        <button id="clearSearchBtn" class="clear-btn" style="display: none;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="searchResults" class="search-results-dropdown"></div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div id="map"></div>
+
+    <aside id="infoPanel" class="info-panel">
+      <div class="panel-header">
+        <div class="panel-title-group">
+          <span class="panel-country-tag" id="panelCountryTag">Kraj</span>
+          <h2 id="panelDestTitle">Wybierz destynację</h2>
+        </div>
+        <button id="closePanelBtn" class="close-panel-btn" title="Zamknij panel">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="panel-info-card" id="panelPaymentInfo">
+        <i class="fa-regular fa-credit-card"></i>
+        <span id="paymentStatusText">Płatność kartą za fakultety: Sprawdzanie...</span>
+      </div>
+
+      <div class="residents-list" id="residentsList">
+        </div>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
